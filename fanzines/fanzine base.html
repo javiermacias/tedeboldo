@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ediciones té de boldo</title>
+<meta content="psicoterapia institucional en córdoba argentina" name="description"/>
+<link href="style.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="./imagenes/logo tdb.png" rel="shortcut icon" type="image/x-icon"/>
+</head>
+<body>
+<nav class="menu">
+<div class="contenedor">
+<a href="../index.html"><img alt="logo de tdb" class="logo" src="../logo tdb.png"/></a>
+<input class="menu-toggle-checkbox" id="menu-toggle" type="checkbox"/>
+<label class="menu-toggle-icon" for="menu-toggle">☰</label>
+<ul class="menu-links">
+<li><a href="../index.html">inicio</a></li>
+<li>
+<a href="../fanzines.html">fanzines</a>
+</li>
+<li><a href="../videos.html">videos</a></li>
+<li><a href="../contacto.html">contacto</a></li>
+</ul>
+</div>
+</nav>
+<div class="parent">
+<div class="header-container">
+<!-- acá VA EL CONTENIDO DEL TEXTO -->
+<p xmlns:cc="http://creativecommons.org/ns#">Los derechos les pertenecen a lxs autores, el pasaje de lengua tiene licencia copyleft, haga lo que quiera, cite la fuente y use la misma licencia <a href="http://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1" rel="license noopener noreferrer" style="display:inline-block;" target="_blank">CC BY-SA 4.0<img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"/><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"/><img src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"/></a></p>
+<!-- Agrega más contenido específico para la página de fanzines según tus necesidades... -->
+</div>
+</div>
+<div class="contenedor cala">
+<img alt="cala" class="logo" src="../cala.png" width="100px">
+</img></div>
+<script>
+	  <!-- este es el script que permite leer el contenido de menu_fanzines.json e integrarlos al menú desplegable -->
+  document.addEventListener("DOMContentLoaded", () => {
+    // Ubicación del archivo JSON
+    const jsonUrl = "./menu_fanzines.json";
+    const submenu = document.getElementById("fanzines-menu");
+
+    // Cargar datos desde el JSON
+    fetch(jsonUrl)
+      .then(response => response.json())
+      .then(data => {
+        // Iterar sobre los elementos del JSON
+        data.fanzines.forEach(item => {
+          // Crear un nuevo elemento <li>
+          const li = document.createElement("li");
+          const a = document.createElement("a");
+          a.href = item.url;
+          a.textContent = item.title;
+
+          li.appendChild(a);
+          submenu.appendChild(li);
+        });
+      })
+      .catch(error => console.error("Error al cargar el menú:", error));
+  });
+</script>
+</body>
+</html>
